@@ -12,7 +12,7 @@ class Client extends ShewenyClient {
         GatewayIntentBits.GuildMessages,
       ],
       partials: [Partials.GuildMember],
-      mode: "development",
+      mode: "production",
       joinThreadsOnCreate: true,
 //      presence: {
 //        status: "online",
