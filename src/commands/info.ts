@@ -11,7 +11,7 @@ export class BotCommand extends Command {
       options: [
         {
           name: 'info',
-          description: 'Information about the bot',
+          description: 'Information about BCMOTI Management',
           type: ApplicationCommandOptionType.Subcommand,
         }
       ],

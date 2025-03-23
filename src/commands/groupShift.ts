@@ -73,7 +73,7 @@ export class GroupShiftCommand extends Command {
       }
 
       const message = await channel.send({
-        content: 'role ping', //<@&1082047459506786385>
+        content: '<@&1187259877010198668>', //<@&>
         embeds: [embed],
         components: [row]
       });
