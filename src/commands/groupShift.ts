@@ -30,7 +30,7 @@ export class GroupShiftCommand extends Command {
       const member = interaction.member as GuildMember;
       if (!member || !ROLES.GROUP_SHIFT.some(roleId => member.roles.cache.has(roleId))) {
         await interaction.reply({
-          content: `❌ You do not have permission to use this command.`,
+          content: `You do not have permission to use this command.`,
           ephemeral: true
         });
         return;
@@ -42,7 +42,7 @@ export class GroupShiftCommand extends Command {
       if (!channel || !(channel instanceof TextChannel)) {
         if (!interaction.replied) {
           await interaction.reply({
-            content: '❌ Target channel not found or is not a text channel.',
+            content: 'Target channel not found or is not a text channel.',
             ephemeral: true
           });
         }
