@@ -16,8 +16,8 @@ export class GroupShiftCommand extends Command {
           type: ApplicationCommandOptionType.String,
           required: true,
           choices: [
-            { name: 'Mundies', value: 'mundies' },
-            { name: 'BCAA', value: 'bcaa' }
+            { name: "Joe's Towing and Recovery", value: 'joes' },
+            { name: 'HT Towing', value: 'httowing' }
           ]
         }
       ],
@@ -62,13 +62,13 @@ export class GroupShiftCommand extends Command {
             .setURL('https://policeroleplay.community/join?code=VancouverRP&placeId=2534724415')
         );
 
-      if (shiftType === 'mundies') {
+      if (shiftType === 'joes') {
         embed
-          .setTitle('<:Mundies_Tow:1172988508483375164> Mundies Shift')
+          .setTitle("Joe's Towing and Recovery Shift")
           .setDescription(`**${(interaction.member as GuildMember)?.displayName || interaction.user.username}** has started a group shift! All roadside assistance personnel are requested to join and assist the team.`);
       } else {
         embed
-          .setTitle('<:BCAA:1287313470190125107> BCAA Shift')
+          .setTitle('HT Towing Shift')
           .setDescription(`**${(interaction.member as GuildMember)?.displayName || interaction.user.username}** has started a group shift! All roadside assistance personnel are requested to join and assist the team.`);
       }
 
