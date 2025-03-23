@@ -33,7 +33,7 @@ export class OpenRoadworkRequestButton extends Button {
     const firstRow = new ActionRowBuilder<TextInputBuilder>().addComponents(locationInput);
     const secondRow = new ActionRowBuilder<TextInputBuilder>().addComponents(descriptionInput);
     const thirdRow = new ActionRowBuilder<TextInputBuilder>().addComponents(vehiclesInput);
-    modal.addComponents(firstRow, secondRow);
+    modal.addComponents(firstRow, secondRow, thirdRow);
 
     await interaction.showModal(modal);
   }
