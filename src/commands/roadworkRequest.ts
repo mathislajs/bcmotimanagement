@@ -28,18 +28,17 @@ export class RoadworkRequestCommand extends Command {
       const member = interaction.member as GuildMember;
       if (!member || !ROLES.ROADWORK_REQUEST.some(roleId => member.roles.cache.has(roleId))) {
         await interaction.reply({
-          content: `❌ You do not have permission to use this command.`,
+          content: `You do not have permission to use this command.`,
           ephemeral: true
         });
         return;
       }
 
-      // Rest of the command logic
       const targetChannel = interaction.options.getChannel('channel', true);
 
       if (!(targetChannel instanceof TextChannel)) {
         await interaction.reply({
-          content: '❌ The selected channel must be a text channel.',
+          content: 'The selected channel must be a text channel.',
           ephemeral: true
         });
         return;
@@ -59,16 +58,16 @@ export class RoadworkRequestCommand extends Command {
       });
 
       await interaction.reply({
-        content: `✅`,
+        content: `Sent!`,
         ephemeral: true
       });
 
     } catch (error) {
       console.error('Error in RR command:', error);
       await interaction.reply({
-        content: '❌ An error occurred while executing this command.',
+        content: 'An error occurred while executing this command.',
         ephemeral: true
       });
     }
   }
-} 
+}
