@@ -23,7 +23,7 @@ class Client extends ShewenyClient {
 //      },
       managers: {
         commands: {
-          directory: "./commands",
+          directory: "./src/commands",
           prefix: "!",
           applicationPermissions: true,
           guildId: process.env.TEST_GUILD_ID,
@@ -32,13 +32,13 @@ class Client extends ShewenyClient {
           }
         },
         events: {
-          directory: "./events",
+          directory: "./src/events",
         },
         buttons: {
-          directory: "./interactions/buttons",
+          directory: "./src/interactions/buttons",
         },
         modals: {
-          directory: "./interactions/modals",
+          directory: "./src/interactions/modals",
         },
       },
     });
