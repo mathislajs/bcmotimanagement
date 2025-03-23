@@ -42,7 +42,7 @@ class Client extends ShewenyClient {
 
     this.managers.commands!.on("cooldownLimit", (ctx) => {
       return ctx.reply({ 
-        content: `⚠️ You're executing this command too fast! You can run it again <t:${Math.floor(Date.now() / 1000) + 10}:R>.`, 
+        content: `You're executing this command too fast! You can run it again <t:${Math.floor(Date.now() / 1000) + 10}:R>.`, 
         ephemeral: true 
       });
     });
