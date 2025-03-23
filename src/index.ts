@@ -7,12 +7,9 @@ class Client extends ShewenyClient {
   constructor() {
     super({
       admins: ["1252710348054597693"],
-      intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-      ],
+      intents: ["Guilds", "GuildMembers", "GuildMessages"],
       partials: [Partials.GuildMember],
-      mode: "production",
+      mode: "development",
       joinThreadsOnCreate: true,
 //      presence: {
 //        status: "online",
@@ -45,7 +42,7 @@ class Client extends ShewenyClient {
 
     this.managers.commands!.on("cooldownLimit", (ctx) => {
       return ctx.reply({ 
-        content: `⚠️ You're executing this command too fast! You can run it again <t:${Math.floor(Date.now() / 1000) + 4}:R>.`, 
+        content: `⚠️ You're executing this command too fast! You can run it again <t:${Math.floor(Date.now() / 1000) + 10}:R>.`, 
         ephemeral: true 
       });
     });

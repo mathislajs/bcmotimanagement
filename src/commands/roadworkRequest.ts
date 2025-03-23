@@ -1,6 +1,7 @@
 import { Command } from 'sheweny';
 import type { ShewenyClient } from 'sheweny';
-import { ChatInputCommandInteraction, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ApplicationCommandOptionType, TextChannel } from 'discord.js';
+import { ChatInputCommandInteraction, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ApplicationCommandOptionType, TextChannel, GuildMember } from 'discord.js';
+import { ROLES } from '../config/roles.js';
 
 export class RoadworkRequestCommand extends Command {
   constructor(client: ShewenyClient) {
@@ -8,6 +9,7 @@ export class RoadworkRequestCommand extends Command {
       name: 'rr',
       description: 'Send the message that initiates roadwork requests',
       type: 'SLASH_COMMAND',
+      cooldown: 10,
       options: [
         {
           name: 'channel',
@@ -17,18 +19,30 @@ export class RoadworkRequestCommand extends Command {
           required: true,
         }
       ],
+      userPermissions: ['UseApplicationCommands'],
     });
   }
 
   async execute(interaction: ChatInputCommandInteraction) {
     try {
+      const member = interaction.member as GuildMember;
+      if (!member || !ROLES.ROADWORK_REQUEST.some(roleId => member.roles.cache.has(roleId))) {
+        await interaction.reply({
+          content: `❌ You do not have permission to use this command.`,
+          ephemeral: true
+        });
+        return;
+      }
+
+      // Rest of the command logic
       const targetChannel = interaction.options.getChannel('channel', true);
 
       if (!(targetChannel instanceof TextChannel)) {
-        return await interaction.reply({
+        await interaction.reply({
           content: '❌ The selected channel must be a text channel.',
           ephemeral: true
         });
+        return;
       }
 
       const row = new ActionRowBuilder<ButtonBuilder>()
@@ -44,15 +58,15 @@ export class RoadworkRequestCommand extends Command {
         components: [row]
       });
 
-      return await interaction.reply({
+      await interaction.reply({
         content: `✅`,
         ephemeral: true
       });
 
     } catch (error) {
       console.error('Error in RR command:', error);
-      return await interaction.reply({
-        content: '❌ The selected channel must be a text channel.',
+      await interaction.reply({
+        content: '❌ An error occurred while executing this command.',
         ephemeral: true
       });
     }
