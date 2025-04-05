@@ -37,7 +37,7 @@ export class GroupShiftCommand extends Command {
       }
 
       const shiftType = interaction.options.getString('type', true);
-      const channel = await interaction.client.channels.fetch('1082772225456877658');
+      const channel = await interaction.client.channels.fetch('1262894244356423841');
 
       if (!channel || !(channel instanceof TextChannel)) {
         if (!interaction.replied) {
